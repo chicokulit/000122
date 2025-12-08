@@ -3,25 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSA Employee Portal - Login</title>
+<title>PSA Employee Portal Login</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="background-glow"></div>
 
-  <div class="login-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Philippine_Statistics_Authority.svg/1059px-Philippine_Statistics_Authority.svg.png" alt="PSA Logo" class="logo">
-    <h1>Employee Login</h1>
-    <form id="loginForm">
-      <input type="text" placeholder="Employee ID" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-  </div>
+<div class="login-container">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Philippine_Statistics_Authority.svg/1059px-Philippine_Statistics_Authority.svg.png" alt="PSA Logo" class="logo">
 
-<script src="js/script.js"></script>
+  <h1>Employee Login</h1>
+
+  <form id="loginForm">
+    <input type="text" id="employeeId" placeholder="Employee ID" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+    <p id="loginError">Invalid Employee ID or Password</p>
+  </form>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
-
-
-
