@@ -5,254 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philippine Statistics Authority | Employee Portal</title>
     <style>
-        /* Reset */
+        /* Reset & base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             display: flex;
-            flex-direction: column;
             min-height: 100vh;
-            background-color: #f4f6f9;
+            background-color: #f4f6f8;
             color: #333;
         }
 
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+        .sidebar h2 {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar ul li {
+            padding: 12px 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .sidebar ul li:hover {
+            background-color: #1666c1;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         /* Header */
-        header {
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background: linear-gradient(90deg, #004080, #0066cc);
-            color: white;
+            background-color: #fff;
+            padding: 15px 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        header .logo {
-            height: 50px;
-        }
-
-        header h1 {
-            margin-left: 10px;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .top-right {
+        .header-left {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
-
-        .top-right .user {
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+        .header-left h1 {
+            font-size: 1.3rem;
+            color: #1a73e8;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .header-right span {
+            margin-right: 20px;
             font-weight: bold;
         }
-
-        .top-right button {
-            background-color: #e74c3c;
+        .header-right i {
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .header-right button {
+            background-color: #1a73e8;
+            color: #fff;
             border: none;
-            color: white;
             padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .header-right button:hover {
+            background-color: #1666c1;
+        }
+
+        /* Top options */
+        .top-options {
+            display: flex;
+            background-color: #e3f2fd;
+            padding: 10px 25px;
+            gap: 15px;
+            font-weight: bold;
+        }
+        .top-options div {
+            cursor: pointer;
+            padding: 8px 12px;
             border-radius: 5px;
-            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .top-options div:hover {
+            background-color: #cfe0fc;
         }
 
-        /* Navbar */
-        nav {
-            display: flex;
-            gap: 20px;
-            padding: 10px 20px;
-            background-color: #0073e6;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Main layout */
-        .container {
-            display: flex;
-            flex: 1;
-            padding: 20px;
-            gap: 20px;
-        }
-
-        /* Left sidebar */
-        .sidebar-left {
-            width: 220px;
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-
-        .sidebar-left h3 {
-            margin-bottom: 10px;
-            color: #004080;
-        }
-
-        .sidebar-left ul {
-            list-style: none;
-        }
-
-        .sidebar-left li {
-            padding: 8px 0;
-            cursor: pointer;
-            color: #0073e6;
-        }
-
-        .sidebar-left li:hover {
-            font-weight: bold;
-        }
-
-        /* Center content */
+        /* Content */
         .content {
-            flex: 1;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            padding: 25px;
+            flex-grow: 1;
         }
-
-        .content h2 {
-            color: #004080;
-            margin-bottom: 15px;
-        }
-
         .announcement {
-            padding: 15px;
-            background-color: #e6f2ff;
-            border-left: 5px solid #004080;
-            margin-bottom: 20px;
+            background-color: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffeeba;
             border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
         }
 
-        .datetime {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+        /* Real-time clock */
+        .clock {
             font-weight: bold;
-            color: #0073e6;
-        }
-
-        /* Right sidebar */
-        .sidebar-right {
-            width: 250px;
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-
-        .sidebar-right h3 {
-            margin-bottom: 10px;
-            color: #004080;
-        }
-
-        .card {
-            background-color: #e6f2ff;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #004080;
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-            }
-            .sidebar-left, .sidebar-right {
-                width: 100%;
-            }
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-left" style="display:flex; align-items:center;">
-            <img src="images.png" alt="PSA Logo" class="logo">
-            <h1>Philippine Statistics Authority | Employee Portal</h1>
-        </div>
-        <div class="top-right">
-            <div class="user">Hi, Danica Cruz!</div>
-            <button title="Messages">💬</button>
-            <button onclick="alert('Logging out...')">Logout</button>
-        </div>
-    </header>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li>Pending Cases</li>
+            <li>Recently Completed Cases</li>
+            <li>Updates Needed</li>
+        </ul>
+    </div>
 
-    <nav>
-        <a href="#">Birth Certificate</a>
-        <a href="#">Marriage Certificate</a>
-        <a href="#">Death Certificate</a>
-        <a href="#">CENOMAR</a>
-        <a href="#">Other Certificates</a>
-    </nav>
-
-    <div class="container">
-        <div class="sidebar-left">
-            <h3>Options</h3>
-            <ul>
-                <li>Pending Cases</li>
-                <li>Recently Completed</li>
-                <li>Updates Needed</li>
-            </ul>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <img src="images.png" alt="PSA Logo" class="logo">
+                <h1>Philippine Statistics Authority | Employee Portal</h1>
+            </div>
+            <div class="header-right">
+                <span id="greeting">Hi, Employee!</span>
+                <i class="messages">💬</i>
+                <button onclick="logout()">Logout</button>
+            </div>
         </div>
 
+        <!-- Top Options -->
+        <div class="top-options">
+            <div>Birth Certificate</div>
+            <div>Marriage Certificate</div>
+            <div>Death Certificate</div>
+            <div>CENOMAR</div>
+            <div>Other Certificates</div>
+        </div>
+
+        <!-- Content -->
         <div class="content">
-            <div class="datetime" id="datetime"></div>
             <div class="announcement">
-                <h2>Announcement</h2>
-                <p>Welcome to the Employee Portal. Please check your pending cases and updates regularly.</p>
-            </div>
-            <div class="announcement">
-                <h2>Reminder</h2>
-                <p>All PSA employees must update their records by end of this month.</p>
-            </div>
-        </div>
-
-        <div class="sidebar-right">
-            <h3>Newsletter</h3>
-            <div class="card">
-                <p>PSA Quarterly Newsletter - December 2025 Edition</p>
-            </div>
-            <div class="card">
-                <p>New updates on Birth Certificate processing guidelines.</p>
+                <p>Welcome to the Employee Portal! Today's date and time: <span class="clock" id="datetime"></span></p>
             </div>
         </div>
     </div>
 
-    <footer>
-        &copy; 2025 Philippine Statistics Authority
-    </footer>
-
     <script>
-        // Real-time date and time
+        // Real-time date & time
         function updateDateTime() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const time = now.toLocaleTimeString();
-            const date = now.toLocaleDateString(undefined, options);
-            document.getElementById('datetime').innerText = `Today is ${date}, ${time}`;
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', second:'2-digit' };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-PH', options);
         }
-
         setInterval(updateDateTime, 1000);
         updateDateTime();
+
+        // Example logout function
+        function logout() {
+            alert('Logging out...');
+            // Add actual logout logic here
+        }
+
+        // Example greeting based on name
+        document.getElementById('greeting').textContent = "Hi, Danica Cruz!";
     </script>
 </body>
 </html>
