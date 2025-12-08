@@ -1,4 +1,4 @@
-/* Basic reset */
+/* Global reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,22 +6,25 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Body background */
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background: linear-gradient(135deg, #004e92, #000428);
   color: #fff;
 }
 
+/* ---------- Login Page ---------- */
 .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 20px;
-  text-align: center;
   width: 320px;
+  margin: auto;
   box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 
@@ -68,4 +71,68 @@ button:hover {
   margin-top: 12px;
   display: none;
   font-size: 14px;
+}
+
+/* ---------- Portal Page ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+  color: #facc15;
+}
+
+.logo-small {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left h1 {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.header-left h3 {
+  font-size: 14px;
+  margin-top: 2px;
+  color: #d1d5db;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portal-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px 35px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  min-width: 150px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.25);
 }
