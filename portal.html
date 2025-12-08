@@ -5,183 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Philippine Statistics Authority | Employee Portal</title>
 <style>
-    /* Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-        display: flex;
-        min-height: 100vh;
-        background-color: #f4f6f8;
-        color: #333;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { display: flex; min-height: 100vh; background-color: #f4f6f8; color: #333; }
 
     /* Sidebar */
-    .sidebar {
-        width: 220px;
-        background-color: #1a73e8;
-        color: #fff;
-        padding: 20px;
-        flex-shrink: 0;
-    }
-    .sidebar h2 {
-        margin-bottom: 30px;
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-    }
-    .sidebar ul {
-        list-style: none;
-    }
-    .sidebar ul li {
-        padding: 12px 8px;
-        margin-bottom: 10px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background 0.3s;
-    }
-    .sidebar ul li:hover {
-        background-color: #1666c1;
-    }
+    .sidebar { width: 220px; background-color: #1a73e8; color: #fff; padding: 20px; flex-shrink: 0; }
+    .sidebar h2 { margin-bottom: 30px; font-size: 1.2rem; letter-spacing: 1px; }
+    .sidebar ul { list-style: none; }
+    .sidebar ul li { padding: 12px 8px; margin-bottom: 10px; cursor: pointer; border-radius: 5px; transition: background 0.3s; }
+    .sidebar ul li:hover { background-color: #1666c1; }
 
     /* Main content */
-    .main-content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
+    .main-content { flex-grow: 1; display: flex; flex-direction: column; }
 
     /* Header */
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #fff;
-        padding: 15px 25px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        position: relative;
-        z-index: 2;
-    }
-    .header-left {
-        display: flex;
-        align-items: center;
-    }
-    .logo {
-        width: 60px;
-        height: 60px;
-        margin-right: 15px;
-    }
-    .header-left h1 {
-        font-size: 1.3rem;
-        color: #1a73e8;
-        letter-spacing: 0.5px;
-    }
-    .header-right {
-        display: flex;
-        align-items: center;
-    }
-    .header-right span {
-        margin-right: 20px;
-        font-weight: bold;
-    }
-    .header-right i {
-        cursor: pointer;
-        margin-right: 20px;
-        font-size: 1.2rem;
-    }
-    .header-right button {
-        background-color: #1a73e8;
-        color: #fff;
-        border: none;
-        padding: 6px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background 0.3s;
-    }
-    .header-right button:hover {
-        background-color: #1666c1;
-    }
+    .header { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 15px 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative; z-index: 2; }
+    .header-left { display: flex; align-items: center; }
+    .logo { width: 60px; height: 60px; margin-right: 15px; }
+    .header-left h1 { font-size: 1.3rem; color: #1a73e8; letter-spacing: 0.5px; }
+    .header-right { display: flex; align-items: center; }
+    .header-right span { margin-right: 20px; font-weight: bold; }
+    .header-right i { cursor: pointer; margin-right: 20px; font-size: 1.2rem; }
+    .header-right button { background-color: #1a73e8; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+    .header-right button:hover { background-color: #1666c1; }
 
     /* Floating certificate box */
-    .certificate-box {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin: -25px auto 20px auto;
-        padding: 15px 25px;
-        background-color: #ffffff;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        width: 90%;
-        max-width: 900px;
-        position: relative;
-        z-index: 1;
-    }
-    .certificate-box .cert {
-        flex: 1;
-        text-align: center;
-        padding: 20px;
-        background: linear-gradient(145deg, #1a73e8, #4285f4);
-        color: white;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .certificate-box .cert:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
+    .certificate-box { display: flex; gap: 20px; justify-content: center; margin: -25px auto 20px auto; padding: 15px 25px; background-color: #ffffff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 10px; width: 90%; max-width: 1000px; position: relative; z-index: 1; }
+    .certificate-box .cert { flex: 1; text-align: center; padding: 20px; background: linear-gradient(145deg, #1a73e8, #4285f4); color: white; border-radius: 10px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+    .certificate-box .cert:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .certificate-box .cert::after { content: "🔖"; position: absolute; top: 10px; right: 10px; font-size: 1.2rem; }
 
     /* Content */
-    .content {
-        padding: 25px;
-        flex-grow: 1;
-    }
+    .content { padding: 25px; flex-grow: 1; }
 
-    .announcement {
-        background-color: #fff3cd;
-        padding: 20px;
-        border-left: 5px solid #ffeeba;
-        border-radius: 8px;
-        font-size: 1rem;
-        margin-bottom: 20px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-    }
+    .announcement { background-color: #fff3cd; padding: 20px; border-left: 5px solid #ffeeba; border-radius: 8px; font-size: 1rem; margin-bottom: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.05); animation: fadeIn 1s ease-in-out; }
+    
+    @keyframes fadeIn { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
 
     /* Dashboard cards */
-    .dashboard {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-    }
-    .card {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    .card h3 {
-        margin-bottom: 15px;
-        color: #1a73e8;
-    }
-    .card p {
-        font-size: 0.95rem;
-        color: #555;
-    }
+    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .card { background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .card h3 { margin-bottom: 15px; color: #1a73e8; }
+    .card p { font-size: 0.95rem; color: #555; }
+    .card::before { content: "📄"; position: absolute; top: 15px; right: 15px; font-size: 2rem; opacity: 0.2; }
 
     /* Real-time clock */
-    .clock {
-        font-weight: bold;
-        color: #555;
-    }
+    .clock { font-weight: bold; color: #555; }
+
 </style>
 </head>
 <body>
@@ -195,6 +66,7 @@
         <li>Updates Needed</li>
         <li>Notifications</li>
         <li>Reports</li>
+        <li>Employee Announcements</li>
     </ul>
 </div>
 
@@ -220,6 +92,7 @@
         <div class="cert">Marriage Certificate</div>
         <div class="cert">Death Certificate</div>
         <div class="cert">CENOMAR</div>
+        <div class="cert">Annotated Certificates</div>
         <div class="cert">Other Certificates</div>
     </div>
 
@@ -247,6 +120,14 @@
             <div class="card">
                 <h3>CENOMAR Requests</h3>
                 <p>8 requests pending. Real-time updates are available in the notification panel.</p>
+            </div>
+            <div class="card">
+                <h3>Annotated Certificates</h3>
+                <p>3 certificates require annotation updates. Ensure the annotations are properly verified.</p>
+            </div>
+            <div class="card">
+                <h3>Other Certificates</h3>
+                <p>Various other certificate requests are pending. Check detailed reports for updates.</p>
             </div>
         </div>
     </div>
