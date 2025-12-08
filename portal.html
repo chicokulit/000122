@@ -1,50 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSA Employee Portal</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSA Employee Portal</title>
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background-color: #0054a6; /* PSA Blue */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .header-center {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-right button {
+      padding: 5px 10px;
+      background-color: #ff4d4d;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Secondary menu */
+    .secondary-menu {
+      display: flex;
+      background-color: #0073e6;
+      padding: 10px 20px;
+      gap: 20px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .secondary-menu a {
+      color: white;
+      transition: 0.2s;
+    }
+
+    .secondary-menu a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    /* Left Sidebar */
+    .sidebar-left {
+      width: 220px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+
+    .sidebar-left h3 {
+      margin-bottom: 10px;
+      color: #0054a6;
+    }
+
+    .sidebar-left ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-left li a {
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      min-height: 400px;
+    }
+
+    .main-content h2 {
+      margin-bottom: 15px;
+      color: #0054a6;
+    }
+
+    .announcement {
+      background-color: #e6f2ff;
+      padding: 15px;
+      border-left: 5px solid #0054a6;
+      border-radius: 5px;
+    }
+
+    /* Right Sidebar */
+    .sidebar-right {
+      width: 220px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+
+    .sidebar-right h3 {
+      margin-bottom: 10px;
+      color: #0054a6;
+    }
+
+    .sidebar-right ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-right li a {
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media(max-width: 1024px){
+      .container {
+        flex-direction: column;
+      }
+      .sidebar-left, .sidebar-right {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="header-left">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Philippine_Statistics_Authority.svg/1059px-Philippine_Statistics_Authority.svg.png" alt="PSA Logo" class="logo-small">
-    <div>
-      <h1>PHILIPPINE STATISTICS AUTHORITY</h1>
-      <h3>Employee Portal</h3>
-    </div>
-  </div>
-  <div class="header-right">
-    <span id="userGreeting">Hi, Employee</span>
-    <button id="logoutBtn">Logout</button>
-  </div>
-</header>
-
-<main>
-  <div class="portal-cards">
-    <div class="card">Birth Certificate</div>
-    <div class="card">Marriage Certificate</div>
-    <div class="card">Death Certificate</div>
-    <div class="card">CENOMAR</div>
-  </div>
-</main>
-
-<script>
-  // Display user greeting
-  const greetingEl = document.getElementById("userGreeting");
-  const name = localStorage.getItem("loggedInUser");
-  if(name){
-      greetingEl.textContent = `Hi, ${name}`;
-  }
-
-  // Logout
-  document.getElementById("logoutBtn").addEventListener("click", function(){
-      localStorage.removeItem("loggedInUser");
-      window.location.href = "index.html";
-  });
-</script>
-
-</body>
-</html>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="data:image/png;base64,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
