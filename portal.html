@@ -7,25 +7,44 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="background-glow"></div>
 
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Philippine_Statistics_Authority.svg/1059px-Philippine_Statistics_Authority.svg.png" alt="PSA Logo" class="logo">
-    <h1>Welcome to PSA Employee Portal</h1>
-  </header>
-
-  <main>
-    <div class="portal-container">
-      <div class="portal-option">Birth Certificate</div>
-      <div class="portal-option">Marriage Certificate</div>
-      <div class="portal-option">Death Certificate</div>
-      <div class="portal-option">CENOMAR</div>
+<header>
+  <div class="header-left">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Philippine_Statistics_Authority.svg/1059px-Philippine_Statistics_Authority.svg.png" alt="PSA Logo" class="logo-small">
+    <div>
+      <h1>PHILIPPINE STATISTICS AUTHORITY</h1>
+      <h3>Employee Portal</h3>
     </div>
-  </main>
+  </div>
+  <div class="header-right">
+    <span id="userGreeting">Hi, Employee</span>
+    <button id="logoutBtn">Logout</button>
+  </div>
+</header>
 
-<script src="js/script.js"></script>
+<main>
+  <div class="portal-cards">
+    <div class="card">Birth Certificate</div>
+    <div class="card">Marriage Certificate</div>
+    <div class="card">Death Certificate</div>
+    <div class="card">CENOMAR</div>
+  </div>
+</main>
+
+<script>
+  // Display user greeting
+  const greetingEl = document.getElementById("userGreeting");
+  const name = localStorage.getItem("loggedInUser");
+  if(name){
+      greetingEl.textContent = `Hi, ${name}`;
+  }
+
+  // Logout
+  document.getElementById("logoutBtn").addEventListener("click", function(){
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+  });
+</script>
+
 </body>
 </html>
-
-
-
