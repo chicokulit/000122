@@ -3,6 +3,7 @@ const viewBtn = document.getElementById('viewBtn');
 const viewer = document.getElementById('viewer');
 const viewerImg = document.getElementById('viewerImg');
 const closeViewer = document.getElementById('closeViewer');
+const backBtn = document.getElementById('backBtn'); // NEW
 
 function updateViewButton() {
     const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
@@ -26,6 +27,12 @@ viewBtn.addEventListener('click', () => {
     }
 });
 
+// Close overlay with ✖
 closeViewer.addEventListener('click', () => {
+    viewer.classList.add('hidden');
+});
+
+// Close overlay with "Go Back" button
+backBtn.addEventListener('click', () => {
     viewer.classList.add('hidden');
 });
