@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recently Completed Cases</title>
-<link rel="stylesheet" href="completed.css">
-</head>
-<body>
-
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2>Menu</h2>
-    <ul>
-        <li><a href="portal">Portal</a></li>
-        <li><a href="status">Status Checker</a></li>
-        <li><a href="completed" class="active">Recently Completed Cases</a></li>
-    </ul>
-</div>
-
-<!-- Main content -->
-<div class="main">
+<div class="completed-container">
     <h1>Recently Completed Cases</h1>
 
-    <!-- Tab content -->
-    <div class="tab-content">
-        <div id="caseList" class="case-list"></div>
+    <table class="completed-table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Document Type</th>
+                <th>Request</th>
+                <th>Completion Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="case-checkbox"></td>
+                <td>Marcus Gaile Sorbito Villarma</td>
+                <td>Birth Certificate</td>
+                <td>First Name Correction</td>
+                <td>December 9, 2025</td>
+            </tr>
+            <!-- Additional rows can be added here -->
+        </tbody>
+    </table>
+
+    <div class="action-buttons">
         <button id="viewBtn" disabled>View Selected</button>
     </div>
 </div>
@@ -32,15 +31,5 @@
 <!-- Viewer overlay -->
 <div id="viewer" class="viewer hidden">
     <span id="closeViewer" class="close">✖</span>
-    <img id="viewerImg" src="" alt="Case Image">
+    <img id="viewerImg" src="">
 </div>
-
-<script src="completed.js"></script>
-<script>
-  // Hide .html in address bar
-  if (window.location.pathname.endsWith(".html")) {
-      history.replaceState({}, "", window.location.pathname.replace(".html",""));
-  }
-</script>
-</body>
-</html>
