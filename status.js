@@ -10,7 +10,6 @@ const statusData = {
         rep: "Danica Mae Cruz",
         repID: "9099845"
     },
-
     "john carlo malon cueme": {
         owner: "John Carlo Malon Cueme",
         type: "Birth Certificate",
@@ -21,7 +20,6 @@ const statusData = {
         rep: "Danica Mae Cruz",
         repID: "9099845"
     },
-
     "rizza malon cueme": {
         owner: "Rizza Malon Cueme",
         type: "Birth Certificate",
@@ -31,7 +29,7 @@ const statusData = {
         submittedOn: "December 9, 2025",
         rep: "Danica Mae Cruz",
         repID: "9099845"
-    } // ✅ closing bracket here
+    }
 };
 
 // Main search function
@@ -39,15 +37,14 @@ function searchStatus() {
     const name = document.getElementById("searchName").value.trim().toLowerCase();
     const resultBox = document.getElementById("result");
 
-    if (!name) {
+    if(!name){
         resultBox.innerHTML = `<p class="not-found">Please enter a name.</p>`;
         resultBox.classList.remove("hidden");
         return;
     }
 
     const data = statusData[name];
-
-    if (!data) {
+    if(!data){
         resultBox.innerHTML = `<p class="not-found">No record found for: <strong>${name}</strong></p>`;
         resultBox.classList.remove("hidden");
         return;
