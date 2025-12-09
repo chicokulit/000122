@@ -29,6 +29,16 @@ const statusData = {
         submittedOn: "December 9, 2025",
         rep: "Danica Mae Cruz",
         repID: "9099845"
+    },
+    "jacquelyn contapay mayor": {
+        owner: "Jacquelyn Contapay Mayor",
+        type: "Birth Certificate",
+        issue: "Dual Entry",
+        oldEntry: "Deleted",
+        newEntry: "Jacquelyn Contapay Mayor",
+        submittedOn: "December 9, 2025",
+        rep: "Danica Mae Cruz",
+        repID: "9099845"
     }
 };
 
@@ -52,7 +62,7 @@ function searchStatus() {
 
     resultBox.innerHTML = `
         <div class="card">
-            <h3>The following details have been submitted to Cebu City Local Civil Registry.</h3>
+            <h3>The following details have been submitted to Local Civil Registry.</h3>
             <p><strong>Document Owner:</strong> ${data.owner}</p>
             <p><strong>Type of document:</strong> ${data.type}</p>
             <p><strong>Issue:</strong> ${data.issue}</p>
