@@ -1,60 +1,28 @@
-// Completed cases data
-const completedCases = [
-    {
-        name: "Marcus Gaile Sorbito Villarma",
-        type: "Birth Certificate",
-        issue: "First Name Correction",
-        completionDate: "December 9, 2025",
-        img: "mgsv.png"
-    }
-];
-
-// Render cases
-const caseList = document.getElementById("caseList");
+const checkboxes = document.querySelectorAll(".case-checkbox");
 const viewBtn = document.getElementById("viewBtn");
-let selectedCase = null;
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewerImg");
+const closeViewer = document.getElementById("closeViewer");
 
-function renderCases() {
-    caseList.innerHTML = "";
-    completedCases.forEach((c, index) => {
-        const div = document.createElement("div");
-        div.classList.add("case-item");
-        div.innerHTML = `
-            <label>
-                <input type="checkbox" data-index="${index}">
-                <strong>${c.name}</strong> | ${c.type} | ${c.issue} | ${c.completionDate}
-            </label>
-        `;
-        caseList.appendChild(div);
+// Enable view button if any checkbox is selected
+checkboxes.forEach(cb => {
+    cb.addEventListener("change", () => {
+        const anyChecked = Array.from(checkboxes).some(c => c.checked);
+        viewBtn.disabled = !anyChecked;
     });
+});
 
-    // Checkbox click
-    const checkboxes = document.querySelectorAll(".case-item input[type='checkbox']");
-    checkboxes.forEach(cb => {
-        cb.addEventListener("change", function() {
-            // uncheck others
-            checkboxes.forEach(other => {
-                if(other !== cb) other.checked = false;
-            });
-            selectedCase = cb.checked ? completedCases[cb.dataset.index] : null;
-            viewBtn.disabled = !selectedCase;
-        });
-    });
-}
-
-renderCases();
-
-// View button
+// Show image when view button clicked
 viewBtn.addEventListener("click", () => {
-    if(selectedCase){
-        document.getElementById("viewerImg").src = selectedCase.img;
-        document.getElementById("viewer").classList.remove("hidden");
+    const selected = Array.from(checkboxes).find(c => c.checked);
+    if(selected){
+        // Example: use Marcus image, you can map checkbox to actual image
+        viewerImg.src = "mgsv.png";
+        viewer.classList.remove("hidden");
     }
 });
 
-// Close overlay
-document.getElementById("closeViewer").addEventListener("click", () => {
-    document.getElementById("viewer").classList.add("hidden");
-    document.getElementById("viewerImg").src = "";
+// Close viewer
+closeViewer.addEventListener("click", () => {
+    viewer.classList.add("hidden");
 });
-
