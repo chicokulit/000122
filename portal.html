@@ -1,127 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PSA Employee Portal</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: #f4f6f8;
-      color: #333;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 260px;
-      background: #1e3a8a;
-      color: #fff;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      padding: 24px 16px;
-    }
-
-    .sidebar h2 {
-      margin: 0 0 24px;
-      font-size: 20px;
-      letter-spacing: 0.5px;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: #cbd5e1;
-      padding: 12px 10px;
-      border-radius: 8px;
-      display: block;
-      margin-bottom: 8px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .sidebar a:hover {
-      background: #334155;
-      color: #fff;
-    }
-
-    .active {
-      background: #475569;
-      color: #fff;
-    }
-
-    /* Main Content */
-    .main {
-      margin-left: 260px;
-      padding: 32px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      margin-bottom: 16px;
-    }
-
-    /* Cards */
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
-    /* Recent Cases */
-    .case-item {
-      padding: 12px 10px;
-      border-bottom: 1px solid #e2e8f0;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .case-item:hover {
-      background: #f1f5f9;
-    }
-
-    .case-item a {
-      text-decoration: none;
-      color: #1e3a8a;
-      font-weight: 500;
-    }
-
-    .case-item a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSA | Employee Portal</title>
+<link rel="stylesheet" href="portal.css">
 </head>
 <body>
-  <div class="sidebar">
-    <h2>PSA Portal</h2>
-    <a href="portal.html" class="active">Dashboard</a>
-    <a href="#">My Tasks</a>
-    <a href="#">Analytics</a>
-    <a href="#">Settings</a>
-  </div>
 
-  <div class="main">
-    <h1 class="section-title">Dashboard Overview</h1>
+<!-- Sidebar -->
+<div class="portal-sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="portal" class="active">Dashboard</a></li>
+        <li><a href="status">Status Checker</a></li>
+        <li><a href="completed">Recently Completed Cases</a></li>
+    </ul>
+</div>
 
-    <div class="card">
-      <h3>Recently Completed Cases</h3>
-      <div class="case-item"><a href="case1.html">Case #2025-001 Birth Registration Correction</a></div>
-      <div class="case-item"><a href="case2.html">Case #2025-002 CENOMAR Request Processing</a></div>
-      <div class="case-item"><a href="case3.html">Case #2025-003 Marriage Certificate Verification</a></div>
+<!-- Main content -->
+<div class="portal-main">
+
+    <!-- Header -->
+    <div class="portal-header">
+        <div class="portal-header-left">
+            <img src="images.png" alt="PSA Logo" class="portal-logo">
+            <h1>Philippine Statistics Authority | Employee Portal</h1>
+        </div>
+        <div class="portal-header-right">
+            <span id="portalGreeting">Hi, Employee!</span>
+            <i class="portal-message">💬</i>
+            <button id="logoutBtn">Logout</button>
+        </div>
     </div>
 
-    <div class="card">
-      <h3>System Status</h3>
-      <p>All services operational. Agents active: 42</p>
+    <!-- Floating Certificate Box -->
+    <div class="portal-certificates">
+        <div class="portal-cert">Birth Certificate</div>
+        <div class="portal-cert">Marriage Certificate</div>
+        <div class="portal-cert">Death Certificate</div>
+        <div class="portal-cert">CENOMAR</div>
+        <div class="portal-cert">Annotated Certificates</div>
+        <div class="portal-cert">Other Certificates</div>
     </div>
-  </div>
+
+    <!-- Dashboard Cards -->
+    <div class="portal-dashboard">
+        <div class="portal-card">
+            <h3>Pending Birth Certificates</h3>
+            <p>5 requests pending verification. Review the applications and update status.</p>
+        </div>
+        <div class="portal-card">
+            <h3>Marriage Certificates Processed</h3>
+            <p>12 certificates completed today. Check details in the reports section.</p>
+        </div>
+        <div class="portal-card">
+            <h3>Death Certificates Updates</h3>
+            <p>2 certificates need corrections. Please review before submission.</p>
+        </div>
+        <div class="portal-card">
+            <h3>CENOMAR Requests</h3>
+            <p>8 requests pending. Real-time updates are available in the notification panel.</p>
+        </div>
+        <div class="portal-card">
+            <h3>Annotated Certificates</h3>
+            <p>3 certificates require annotation updates. Ensure the annotations are properly verified.</p>
+        </div>
+        <div class="portal-card">
+            <h3>Other Certificates</h3>
+            <p>Various other certificate requests are pending. Check detailed reports for updates.</p>
+        </div>
+    </div>
+
+</div>
+
+<script src="portal.js"></script>
 </body>
 </html>
