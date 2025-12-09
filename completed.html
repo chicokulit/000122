@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Completed Cases | PSA Employee Portal</title>
+<title>Recently Completed Cases</title>
 <link rel="stylesheet" href="completed.css">
 </head>
-
 <body>
 
 <!-- Sidebar -->
@@ -20,12 +19,14 @@
 </div>
 
 <!-- Main content -->
-<div class="main-content">
+<div class="main">
     <h1>Recently Completed Cases</h1>
 
-    <div id="caseList" class="case-list"></div>
-
-    <button id="viewBtn" disabled>View Selected</button>
+    <!-- Tab content -->
+    <div class="tab-content">
+        <div id="caseList" class="case-list"></div>
+        <button id="viewBtn" disabled>View Selected</button>
+    </div>
 </div>
 
 <!-- Viewer overlay -->
@@ -35,13 +36,11 @@
 </div>
 
 <script src="completed.js"></script>
-
 <script>
-  // Remove .html from URL
+  // Hide .html in address bar
   if (window.location.pathname.endsWith(".html")) {
       history.replaceState({}, "", window.location.pathname.replace(".html",""));
   }
 </script>
-
 </body>
 </html>
