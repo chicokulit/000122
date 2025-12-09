@@ -16,8 +16,7 @@ checkboxes.forEach(cb => {
 viewBtn.addEventListener("click", () => {
     const selected = Array.from(checkboxes).find(c => c.checked);
     if(selected){
-        // Example: use Marcus image, you can map checkbox to actual image
-        viewerImg.src = "mgsv.png";
+        viewerImg.src = "mgsv.png"; // example image
         viewer.classList.remove("hidden");
     }
 });
