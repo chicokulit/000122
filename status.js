@@ -69,7 +69,7 @@ function searchStatus() {
 
     resultBox.innerHTML = `
         <div class="card">
-            <h3>The following details have been submitted to ${city} Civil Registry.</h3>
+            <h3>The following details have been submitted to ${city} Local Civil Registry.</h3>
             <p><strong>Document Owner:</strong> ${data.owner}</p>
             <p><strong>Type of document:</strong> ${data.type}</p>
             <p><strong>Issue:</strong> ${data.issue}</p>
