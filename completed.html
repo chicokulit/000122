@@ -3,12 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Completed Cases</title>
-<link rel="stylesheet" href="completed.css">
+<title>PSA | Recently Completed Cases</title>
+<style>
+/* Basic Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+/* Body & Layout */
+body { display: flex; min-height: 100vh; background: #f4f6f8; color: #333; }
+
+/* Sidebar */
+.sidebar { width: 220px; background-color: #1a73e8; color: #fff; padding: 20px; flex-shrink: 0; }
+.sidebar h2 { margin-bottom: 20px; font-size: 1.2rem; }
+.sidebar ul { list-style: none; }
+.sidebar ul li { margin-bottom: 10px; }
+.sidebar ul li a { display: block; color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; transition: background 0.3s; }
+.sidebar ul li a.active, .sidebar ul li a:hover { background: #0033aa; }
+
+/* Main Content */
+.main { flex-grow: 1; padding: 25px; }
+.main h1 { margin-bottom: 20px; color: #0033aa; }
+.case-item { margin-bottom: 12px; }
+.case-item input { margin-right: 10px; }
+#viewBtn { margin-top: 15px; padding: 10px 20px; background: #0033aa; color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
+#viewBtn:disabled { background: #aaa; cursor: not-allowed; }
+
+/* Viewer Overlay */
+.viewer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; }
+.viewer img { max-width: 90%; max-height: 90%; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.4); }
+.viewer.hidden { display: none; }
+.close { position: absolute; top: 20px; right: 30px; font-size: 28px; color: white; cursor: pointer; font-weight: bold; }
+</style>
 </head>
 
 <body>
 
+<!-- Sidebar -->
 <div class="sidebar">
     <h2>Menu</h2>
     <ul>
@@ -18,26 +47,77 @@
     </ul>
 </div>
 
+<!-- Main Content -->
 <div class="main">
     <h1>Recently Completed Cases</h1>
-
     <div id="caseList"></div>
-
     <button id="viewBtn" disabled>View Selected</button>
 </div>
 
-<!-- Viewer overlay -->
+<!-- Viewer Overlay -->
 <div id="viewer" class="viewer hidden">
     <span id="closeViewer" class="close">✖</span>
-    <img id="viewerImg" src="">
+    <img id="viewerImg" src="" alt="Case Image">
 </div>
 
-<script src="completed.js"></script>
-
 <script>
-  if (window.location.pathname.endsWith(".html")) {
-      history.replaceState({}, "", window.location.pathname.replace(".html",""));
-  }
+// Sample recently completed cases data
+const completedCases = [
+    {
+        name: "Marcus Gaile Sorbito Villarma",
+        type: "Birth Certificate",
+        issue: "First Name Correction",
+        completionDate: "December 9, 2025",
+        image: "mgsv.png"
+    },
+    {
+        name: "Jane De Asis",
+        type: "Marriage Certificate",
+        issue: "Spelling Correction",
+        completionDate: "December 7, 2025",
+        image: "jda.png"
+    }
+];
+
+// Generate case list dynamically
+const caseList = document.getElementById("caseList");
+completedCases.forEach((c, index) => {
+    const div = document.createElement("div");
+    div.className = "case-item";
+    div.innerHTML = `
+        <input type="radio" name="caseSelect" id="case${index}" value="${index}">
+        <label for="case${index}">${c.name} | ${c.type} | ${c.issue} | ${c.completionDate}</label>
+    `;
+    caseList.appendChild(div);
+});
+
+// Enable 'View Selected' button when a case is chosen
+const viewBtn = document.getElementById("viewBtn");
+caseList.addEventListener("change", () => {
+    viewBtn.disabled = !document.querySelector('input[name="caseSelect"]:checked');
+});
+
+// Viewer overlay logic
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewerImg");
+const closeViewer = document.getElementById("closeViewer");
+
+viewBtn.addEventListener("click", () => {
+    const selectedIndex = document.querySelector('input[name="caseSelect"]:checked').value;
+    const selectedCase = completedCases[selectedIndex];
+    viewerImg.src = selectedCase.image;
+    viewer.classList.remove("hidden");
+});
+
+closeViewer.addEventListener("click", () => {
+    viewer.classList.add("hidden");
+    viewerImg.src = "";
+});
+
+// Hide .html in URL
+if (window.location.pathname.endsWith(".html")) {
+    history.replaceState({}, "", window.location.pathname.replace(".html",""));
+}
 </script>
 
 </body>
