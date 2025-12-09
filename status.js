@@ -8,7 +8,8 @@ const statusData = {
         newEntry: "Jessa Formentera Oliveros",
         submittedOn: "December 9, 2025",
         rep: "Danica Mae Cruz",
-        repID: "9099845"
+        repID: "9099845",
+        city: "Cebu City"
     },
     "john carlo malon cueme": {
         owner: "John Carlo Malon Cueme",
@@ -18,7 +19,8 @@ const statusData = {
         newEntry: "John Carlo Cueme Ullegue",
         submittedOn: "December 5, 2025",
         rep: "Danica Mae Cruz",
-        repID: "9099845"
+        repID: "9099845",
+        city: "Las Piñas"
     },
     "rizza malon cueme": {
         owner: "Rizza Malon Cueme",
@@ -28,7 +30,8 @@ const statusData = {
         newEntry: "Rizza Cueme Ullegue",
         submittedOn: "December 9, 2025",
         rep: "Danica Mae Cruz",
-        repID: "9099845"
+        repID: "9099845",
+        city: "Las Piñas"
     },
     "jacquelyn contapay mayor": {
         owner: "Jacquelyn Contapay Mayor",
@@ -38,7 +41,8 @@ const statusData = {
         newEntry: "Jacquelyn Contapay Mayor",
         submittedOn: "December 5, 2025",
         rep: "Danica Mae Cruz",
-        repID: "9099845"
+        repID: "9099845",
+        city: "Masbate"
     }
 };
 
@@ -47,22 +51,25 @@ function searchStatus() {
     const name = document.getElementById("searchName").value.trim().toLowerCase();
     const resultBox = document.getElementById("result");
 
-    if(!name){
+    if (!name) {
         resultBox.innerHTML = `<p class="not-found">Please enter a name.</p>`;
         resultBox.classList.remove("hidden");
         return;
     }
 
     const data = statusData[name];
-    if(!data){
+    if (!data) {
         resultBox.innerHTML = `<p class="not-found">No record found for: <strong>${name}</strong></p>`;
         resultBox.classList.remove("hidden");
         return;
     }
 
+    // Use the city if defined, else default to "Local"
+    const city = data.city ? data.city : "Local";
+
     resultBox.innerHTML = `
         <div class="card">
-            <h3>The following details have been submitted to Local Civil Registry.</h3>
+            <h3>The following details have been submitted to ${city} Civil Registry.</h3>
             <p><strong>Document Owner:</strong> ${data.owner}</p>
             <p><strong>Type of document:</strong> ${data.type}</p>
             <p><strong>Issue:</strong> ${data.issue}</p>
