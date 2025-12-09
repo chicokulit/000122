@@ -16,7 +16,7 @@ loginForm.addEventListener("submit", function(e) {
 
   if(user){
     localStorage.setItem("loggedInUser", user.name);
-    window.location.href = "portal.html";
+    window.location.href = "portal";
   } else {
     loginError.style.display = "block";
   }
