@@ -1,24 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Checker</title>
-    <link rel="stylesheet" href="status.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSA | Status Checker</title>
+<link rel="stylesheet" href="status.css">
+<style>
+    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; display: flex; min-height: 100vh; }
+    
+    /* Sidebar */
+    .sidebar { width: 220px; background-color: #1a73e8; color: #fff; padding: 20px; flex-shrink: 0; }
+    .sidebar h2 { margin-bottom: 30px; font-size: 1.2rem; }
+    .sidebar ul { list-style: none; }
+    .sidebar ul li { margin-bottom: 10px; }
+    .sidebar ul li a {
+        display: block;
+        padding: 12px 8px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    .sidebar ul li a:hover { background-color: #1666c1; }
+    .sidebar ul li a.status-link { background-color: #0033aa; }
+    .sidebar ul li a.status-link:hover { background-color: #002a88; color: white; }
+
+    /* Main content */
+    .main-content { flex-grow: 1; padding: 25px; }
+
+    .search-box { display: flex; gap: 10px; margin-bottom: 25px; }
+    .search-box input { flex: 1; padding: 10px; font-size: 16px; border-radius: 6px; border: 1px solid #aaa; }
+    .search-box button { padding: 10px 18px; font-size: 15px; background: #0033aa; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    .search-box button:hover { background: #002a88; }
+
+    .result.hidden { display: none; }
+    .card { background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd; line-height: 1.6; margin-top: 15px; }
+    .card h3 { color: #0033aa; }
+    .note { margin-top: 15px; color: #0044dd; font-weight: bold; }
+    .disclaimer { background: #efefef; padding: 12px; margin-top: 18px; border-radius: 8px; font-size: 13px; }
+    .not-found { color: red; font-size: 16px; font-weight: bold; }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <h2 class="title">Document Status Checker</h2>
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="portal">Portal</a></li>
+        <li><a href="status" class="status-link">Status Checker</a></li>
+        <!-- Add more links if needed -->
+    </ul>
+</div>
 
+<!-- Main content -->
+<div class="main-content">
+    <h1>Status Checker</h1>
     <div class="search-box">
-        <input type="text" id="searchName" placeholder="Enter Document Owner Name">
+        <input type="text" id="searchName" placeholder="Enter full name...">
         <button onclick="searchStatus()">Search</button>
     </div>
-
     <div id="result" class="result hidden"></div>
 </div>
 
 <script src="status.js"></script>
+<script>
+    // Hide .html in address bar for this page
+    if(window.location.pathname.endsWith(".html")){
+        const cleanPath = window.location.pathname.replace(".html","");
+        history.replaceState({}, "", cleanPath);
+    }
+</script>
 </body>
 </html>
