@@ -1,1 +1,36 @@
+<div class="completed-container">
+    <h1>Recently Completed Cases</h1>
+
+    <table class="completed-table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Document Type</th>
+                <th>Request</th>
+                <th>Completion Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="case-checkbox"></td>
+                <td>Marcus Gaile Sorbito Villarma</td>
+                <td>Birth Certificate</td>
+                <td>First Name Correction</td>
+                <td>December 9, 2025</td>
+            </tr>
+            <!-- Additional rows can be added here -->
+        </tbody>
+    </table>
+
+    <div class="action-buttons">
+        <button id="viewBtn" disabled>View Selected</button>
+    </div>
+</div>
+
+<!-- Viewer overlay -->
+<div id="viewer" class="viewer hidden">
+    <span id="closeViewer" class="close">✖</span>
+    <img id="viewerImg" src="">
+</div>
 
