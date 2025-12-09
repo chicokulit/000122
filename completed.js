@@ -1,66 +1,59 @@
-// Sample data
+// Completed cases data
 const completedCases = [
     {
         name: "Marcus Gaile Sorbito Villarma",
         type: "Birth Certificate",
         issue: "First Name Correction",
         completionDate: "December 9, 2025",
-        image: "mgsv.png"
-    },
-    {
-        name: "Rizza Malon Cueme",
-        type: "Birth Certificate",
-        issue: "Father Acknowledgement",
-        completionDate: "December 9, 2025",
-        image: "rmcu.png"
+        img: "mgsv.png"
     }
 ];
 
-// DOM elements
+// Render cases
 const caseList = document.getElementById("caseList");
 const viewBtn = document.getElementById("viewBtn");
-const viewer = document.getElementById("viewer");
-const viewerImg = document.getElementById("viewerImg");
-const closeViewer = document.getElementById("closeViewer");
-
 let selectedCase = null;
 
-// Generate case list
-completedCases.forEach((c, index) => {
-    const div = document.createElement("div");
-    div.classList.add("case-item");
+function renderCases() {
+    caseList.innerHTML = "";
+    completedCases.forEach((c, index) => {
+        const div = document.createElement("div");
+        div.classList.add("case-item");
+        div.innerHTML = `
+            <label>
+                <input type="checkbox" data-index="${index}">
+                <strong>${c.name}</strong> | ${c.type} | ${c.issue} | ${c.completionDate}
+            </label>
+        `;
+        caseList.appendChild(div);
+    });
 
-    div.innerHTML = `
-        <label>
-            <input type="radio" name="selectedCase" value="${index}">
-            <strong>${c.name}</strong> | ${c.type} | ${c.issue} | ${c.completionDate}
-        </label>
-    `;
-    caseList.appendChild(div);
-});
+    // Checkbox click
+    const checkboxes = document.querySelectorAll(".case-item input[type='checkbox']");
+    checkboxes.forEach(cb => {
+        cb.addEventListener("change", function() {
+            // uncheck others
+            checkboxes.forEach(other => {
+                if(other !== cb) other.checked = false;
+            });
+            selectedCase = cb.checked ? completedCases[cb.dataset.index] : null;
+            viewBtn.disabled = !selectedCase;
+        });
+    });
+}
 
-// Listen for selection
-caseList.addEventListener("change", (e) => {
-    if(e.target.name === "selectedCase") {
-        selectedCase = completedCases[e.target.value];
-        viewBtn.disabled = false;
-    }
-});
+renderCases();
 
-// View Selected button
+// View button
 viewBtn.addEventListener("click", () => {
     if(selectedCase){
-        viewerImg.src = selectedCase.image;
-        viewer.classList.add("visible");
+        document.getElementById("viewerImg").src = selectedCase.img;
+        document.getElementById("viewer").classList.remove("hidden");
     }
 });
 
-// Close viewer
-closeViewer.addEventListener("click", () => {
-    viewer.classList.remove("visible");
-    viewerImg.src = "";
-    // Deselect radio
-    document.querySelector('input[name="selectedCase"]:checked').checked = false;
-    selectedCase = null;
-    viewBtn.disabled = true;
+// Close overlay
+document.getElementById("closeViewer").addEventListener("click", () => {
+    document.getElementById("viewer").classList.add("hidden");
+    document.getElementById("viewerImg").src = "";
 });
