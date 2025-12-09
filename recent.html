@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recently Completed Cases</title>
+<link rel="stylesheet" href="recent.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="portal">Portal</a></li>
+        <li><a href="status">Status Checker</a></li>
+        <li><a href="recent" class="active">Recently Completed Cases</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <h1>Recently Completed Cases</h1>
+
+    <table class="case-table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Issue</th>
+                <th>Completion Date</th>
+            </tr>
+        </thead>
+        <tbody id="caseList"></tbody>
+    </table>
+
+    <div class="actions">
+        <button id="viewBtn" onclick="viewRecord()" disabled>View</button>
+        <button id="closeBtn" onclick="closeViewer()" class="hidden">Close Page</button>
+    </div>
+
+    <!-- Image Viewer -->
+    <div id="imageViewer" class="image-viewer hidden">
+        <span class="close" onclick="closeViewer()">✖</span>
+        <img id="caseImage" src="">
+    </div>
+
+</div>
+
+<script src="recent.js"></script>
+
+<script>
+    if (window.location.pathname.endsWith(".html")) {
+        const clean = window.location.pathname.replace(".html", "");
+        history.replaceState({}, "", clean);
+    }
+</script>
+
+</body>
+</html>
