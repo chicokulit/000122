@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Completed Cases</title>
+<link rel="stylesheet" href="completed.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="portal">Portal</a></li>
+        <li><a href="status">Status Checker</a></li>
+        <li><a href="completed" class="active">Recently Completed Cases</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <h1>Recently Completed Cases</h1>
+
+    <div id="caseList"></div>
+
+    <button id="viewBtn" disabled>View Selected</button>
+</div>
+
+<!-- Viewer overlay -->
+<div id="viewer" class="viewer hidden">
+    <span id="closeViewer" class="close">✖</span>
+    <img id="viewerImg" src="">
+</div>
+
+<script src="completed.js"></script>
+
+<script>
+  if (window.location.pathname.endsWith(".html")) {
+      history.replaceState({}, "", window.location.pathname.replace(".html",""));
+  }
+</script>
+
+</body>
+</html>
