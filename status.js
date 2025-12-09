@@ -36,7 +36,7 @@ const statusData = {
         issue: "Dual Entry",
         oldEntry: "Deleted",
         newEntry: "Jacquelyn Contapay Mayor",
-        submittedOn: "December 9, 2025",
+        submittedOn: "December 5, 2025",
         rep: "Danica Mae Cruz",
         repID: "9099845"
     }
