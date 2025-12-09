@@ -11,27 +11,27 @@ const statusData = {
         repID: "9099845"
     },
 
-     "john carlo malon cueme": {
-         owner: "John Carlo Malon Cueme",
-         type: "Birth Certificate",
-         issue: "Father Acknowledgement",
-         oldEntry: "John Carlo Malon Cueme",
-         newEntry: "John Carlo Cueme Ullegue",
-         submittedOn: "December 5, 2025",
-         rep: "Danica Mae Cruz",
-         repID: "9099845"
+    "john carlo malon cueme": {
+        owner: "John Carlo Malon Cueme",
+        type: "Birth Certificate",
+        issue: "Father Acknowledgement",
+        oldEntry: "John Carlo Malon Cueme",
+        newEntry: "John Carlo Cueme Ullegue",
+        submittedOn: "December 5, 2025",
+        rep: "Danica Mae Cruz",
+        repID: "9099845"
     },
 
-     "rizza malon cueme": {
-         owner: "Rizza Malon Cueme",
-         type: "Birth Certificate",
-         issue: "Father Acknowledgement",
-         oldEntry: "Rizza Malon Cueme",
-         newEntry: "Rizza Cueme Ullegue",
-         submittedOn: "December 9, 2025",
-         rep: "Danica Mae Cruz",
-         repID: "9099845"
-    },    
+    "rizza malon cueme": {
+        owner: "Rizza Malon Cueme",
+        type: "Birth Certificate",
+        issue: "Father Acknowledgement",
+        oldEntry: "Rizza Malon Cueme",
+        newEntry: "Rizza Cueme Ullegue",
+        submittedOn: "December 9, 2025",
+        rep: "Danica Mae Cruz",
+        repID: "9099845"
+    } // ✅ closing bracket here
 };
 
 // Main search function
