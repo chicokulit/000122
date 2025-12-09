@@ -11,10 +11,8 @@ const statusData = {
         repID: "9099845"
     },
 
-    // ADD MORE PEOPLE HERE BELOW
-    // "juan dela cruz": { ... }
+    // Add more people here if needed
 };
-
 
 // Main search function
 function searchStatus() {
@@ -35,11 +33,9 @@ function searchStatus() {
         return;
     }
 
-    // If record exists, generate PSA-style card
     resultBox.innerHTML = `
         <div class="card">
-            <h3>The following details has been submitted to Cebu City Local Civil Registry.</h3>
-
+            <h3>The following details have been submitted to Cebu City Local Civil Registry.</h3>
             <p><strong>Document Owner:</strong> ${data.owner}</p>
             <p><strong>Type of document:</strong> ${data.type}</p>
             <p><strong>Issue:</strong> ${data.issue}</p>
@@ -47,17 +43,13 @@ function searchStatus() {
             <p><strong>New entry in system:</strong> ${data.newEntry}</p>
             <p><strong>Changes submitted on:</strong> ${data.submittedOn}</p>
             <p><strong>Authorized Representative:</strong> ${data.rep}, Employee ID: ${data.repID}</p>
-
             <p class="note">Once approved, this information will be submitted to the Philippine Statistics Authority.</p>
-
             <div class="disclaimer">
-                <strong>Disclaimer:</strong>
-                This document is issued for informational purposes only. All details contained herein are 
+                <strong>Disclaimer:</strong> This document is issued for informational purposes only. All details contained herein are 
                 based on the official records provided by the Philippine Statistics Authority. Unauthorized use, 
                 reproduction, or distribution is strictly prohibited.
             </div>
         </div>
     `;
-
     resultBox.classList.remove("hidden");
 }
