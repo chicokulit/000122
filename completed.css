@@ -14,6 +14,7 @@
     margin-bottom: 20px;
 }
 
+/* Table styles */
 .completed-table {
     width: 100%;
     border-collapse: collapse;
@@ -33,12 +34,26 @@
     background-color: #0033aa;
     color: white;
     font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
-.completed-table tr:hover {
+.completed-table tbody tr:nth-child(even) {
     background-color: #f1f7ff;
 }
 
+.completed-table tr:hover {
+    background-color: #dbe9ff;
+}
+
+/* Checkbox */
+.completed-table td input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Action buttons */
 .action-buttons {
     text-align: right;
     margin-top: 10px;
