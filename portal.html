@@ -1,167 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSA | Employee Portal</title>
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { display: flex; min-height: 100vh; background-color: #f4f6f8; color: #333; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSA Employee Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
 
     /* Sidebar */
-    .sidebar { width: 220px; background-color: #1a73e8; color: #fff; padding: 20px; flex-shrink: 0; }
-    .sidebar h2 { margin-bottom: 30px; font-size: 1.2rem; letter-spacing: 1px; }
-    .sidebar ul { list-style: none; }
-    .sidebar ul li { margin-bottom: 10px; border-radius: 5px; }
-    .sidebar ul li a {
-        display: block;
-        padding: 12px 8px;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        border-radius: 5px;
-        transition: background 0.3s, color 0.3s;
+    .sidebar {
+      width: 260px;
+      background: #1e3a8a;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 16px;
     }
-    .sidebar ul li a:hover { background-color: #1666c1; }
-    .sidebar ul li a.status-link { background-color: #0033aa; }
-    .sidebar ul li a.status-link:hover { background-color: #002a88; color: white; }
 
-    /* Main content */
-    .main-content { flex-grow: 1; display: flex; flex-direction: column; }
+    .sidebar h2 {
+      margin: 0 0 24px;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
 
-    /* Header */
-    .header { display: flex; justify-content: space-between; align-items: center; background-color: #fff; padding: 15px 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .header-left { display: flex; align-items: center; }
-    .logo { width: 60px; height: 60px; margin-right: 15px; }
-    .header-left h1 { font-size: 1.3rem; color: #1a73e8; }
-    .header-right { display: flex; align-items: center; }
-    .header-right span { margin-right: 20px; font-weight: bold; }
-    .header-right i { cursor: pointer; margin-right: 20px; font-size: 1.2rem; }
-    .header-right button { background-color: #1a73e8; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-    .header-right button:hover { background-color: #1666c1; }
+    .sidebar a {
+      text-decoration: none;
+      color: #cbd5e1;
+      padding: 12px 10px;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
 
-    /* Floating certificate box */
-    .certificate-box { display: flex; gap: 20px; justify-content: center; margin: 20px auto; padding: 15px 25px; background-color: #ffffff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 10px; width: 90%; max-width: 1000px; }
-    .certificate-box .cert { flex: 1; text-align: center; padding: 20px; background: linear-gradient(145deg, #1a73e8, #4285f4); color: white; border-radius: 10px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
-    .certificate-box .cert:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-    .certificate-box .cert::after { content: "🔖"; position: absolute; top: 10px; right: 10px; font-size: 1.2rem; }
+    .sidebar a:hover {
+      background: #334155;
+      color: #fff;
+    }
 
-    /* Content */
-    .content { padding: 25px; flex-grow: 1; }
+    .active {
+      background: #475569;
+      color: #fff;
+    }
 
-    .announcement { background-color: #fff3cd; padding: 20px; border-left: 5px solid #ffeeba; border-radius: 8px; font-size: 1rem; margin-bottom: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.05); animation: fadeIn 1s ease-in-out; }
-    @keyframes fadeIn { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+    /* Main Content */
+    .main {
+      margin-left: 260px;
+      padding: 32px;
+    }
 
-    /* Dashboard cards */
-    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .card { background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-    .card h3 { margin-bottom: 15px; color: #1a73e8; }
-    .card p { font-size: 0.95rem; color: #555; }
-    .card::before { content: "📄"; position: absolute; top: 15px; right: 15px; font-size: 2rem; opacity: 0.2; }
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
 
-    /* Real-time clock */
-    .clock { font-weight: bold; color: #555; }
+    /* Cards */
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
 
-</style>
+    .card h3 {
+      margin-top: 0;
+    }
+
+    /* Recent Cases */
+    .case-item {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .case-item:hover {
+      background: #f1f5f9;
+    }
+
+    .case-item a {
+      text-decoration: none;
+      color: #1e3a8a;
+      font-weight: 500;
+    }
+
+    .case-item a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+  <div class="sidebar">
+    <h2>PSA Portal</h2>
+    <a href="portal.html" class="active">Dashboard</a>
+    <a href="#">My Tasks</a>
+    <a href="#">Analytics</a>
+    <a href="#">Settings</a>
+  </div>
 
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2>Menu</h2>
-    <ul>
-        <li><a href="portal">Pending Cases</a></li>
-        <li><a href="completed">Recently Completed Cases</a></li>
-        <li><a href="portal">Updates Needed</a></li>
-        <li><a href="portal">Notifications</a></li>
-        <li><a href="portal">Reports</a></li>
-        <li><a href="portal">Employee Announcements</a></li>
-        <li><a href="status" class="status-link">Status Checker</a></li>
-    </ul>
-</div>
+  <div class="main">
+    <h1 class="section-title">Dashboard Overview</h1>
 
-<!-- Main content -->
-<div class="main-content">
-
-    <!-- Header -->
-    <div class="header">
-        <div class="header-left">
-            <img src="images.png" alt="PSA Logo" class="logo">
-            <h1>Philippine Statistics Authority | Employee Portal</h1>
-        </div>
-        <div class="header-right">
-            <span id="greeting">Hi, Danica Cruz!</span>
-            <i class="messages">💬</i>
-            <button onclick="logout()">Logout</button>
-        </div>
+    <div class="card">
+      <h3>Recently Completed Cases</h3>
+      <div class="case-item"><a href="case1.html">Case #2025-001 Birth Registration Correction</a></div>
+      <div class="case-item"><a href="case2.html">Case #2025-002 CENOMAR Request Processing</a></div>
+      <div class="case-item"><a href="case3.html">Case #2025-003 Marriage Certificate Verification</a></div>
     </div>
 
-    <!-- Floating Certificate Box -->
-    <div class="certificate-box">
-        <div class="cert">Birth Certificate</div>
-        <div class="cert">Marriage Certificate</div>
-        <div class="cert">Death Certificate</div>
-        <div class="cert">CENOMAR</div>
-        <div class="cert">Annotated Certificates</div>
-        <div class="cert">Other Certificates</div>
+    <div class="card">
+      <h3>System Status</h3>
+      <p>All services operational. Agents active: 42</p>
     </div>
-
-    <!-- Main Content -->
-    <div class="content">
-        <div class="announcement">
-            Welcome to the Employee Portal! Today's date and time: <span class="clock" id="datetime"></span>
-        </div>
-
-        <!-- Dashboard cards -->
-        <div class="dashboard">
-            <div class="card">
-                <h3>Pending Birth Certificates</h3>
-                <p>5 requests pending verification. Review the applications and update status.</p>
-            </div>
-            <div class="card">
-                <h3>Marriage Certificates Processed</h3>
-                <p>12 certificates completed today. Check details in the reports section.</p>
-            </div>
-            <div class="card">
-                <h3>Death Certificates Updates</h3>
-                <p>2 certificates need corrections. Please review before submission.</p>
-            </div>
-            <div class="card">
-                <h3>CENOMAR Requests</h3>
-                <p>8 requests pending. Real-time updates are available in the notification panel.</p>
-            </div>
-            <div class="card">
-                <h3>Annotated Certificates</h3>
-                <p>3 certificates require annotation updates. Ensure the annotations are properly verified.</p>
-            </div>
-            <div class="card">
-                <h3>Other Certificates</h3>
-                <p>Various other certificate requests are pending. Check detailed reports for updates.</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<script>
-    // Logout example
-    function logout() {
-        alert('Logging out...');
-    }
-
-    document.getElementById('greeting').textContent = "Hi, Danica Cruz!";
-
-    // Real-time clock
-    function updateDateTime() {
-        const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', second:'2-digit' };
-        document.getElementById('datetime').textContent = now.toLocaleDateString('en-PH', options);
-    }
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-</script>
-
+  </div>
 </body>
 </html>
-
